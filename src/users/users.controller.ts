@@ -7,27 +7,22 @@ import { UserDto } from './user.dto';
 export class UsersController {
     constructor(private usersS: UsersService) {}
 
-    @Get()
-    getAllUsers(): Promise<User[]> {
-        return this.usersS.getAllUsers();
-    }
-
-    @Get('/:_id')
-    getOneUser(@Param('_id') _id:string): Promise<User> {
-        return this.usersS.getOneUser(_id);
-    }
-
     @Post('/register')
-    createUser(@Body() userDto: UserDto): Promise<User> {
-        return this.usersS.createUser(userDto);
+    userRegister(@Body() userDto: UserDto): Promise<void> {
+        return this.usersS.userRegister(userDto);
+    }
+
+    @Post('/login')
+    userLogin(@Body() userDto: UserDto): Promise<{ accessToken: string}> {
+        return this.usersS.userLogin(userDto);
     }
 
     @Patch('/:_id')
-    updateUser(
+    userUpdate(
         @Param('_id') _id:string,
         @Body() userDto: UserDto,
     ): Promise<User> {
-        return this.usersS.updateUser(_id, userDto);
+        return this.usersS.userUpdate(_id, userDto);
     }
 
     @Delete('/:_id')

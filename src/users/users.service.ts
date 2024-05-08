@@ -1,37 +1,63 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { User } from './user.model';
 import { UserDto } from './user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class UsersService {
 
-    constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+    constructor(
+        @InjectModel(User.name) private userModel: Model<User>,
+        private jwtS: JwtService,
+    ) {}
 
-    async createUser(userDto: UserDto): Promise<User> {
+    async userRegister(userDto: UserDto): Promise<void> {
         const createdUser = new this.userModel(userDto);
-        return createdUser.save();
-    }
 
-    async getAllUsers(): Promise<User[]> {
-        return this.userModel.find().exec();
-    }
+        const salt = await bcrypt.genSalt();
+        const hashedPass = await bcrypt.hash(createdUser.pass, salt)
+        createdUser.pass = hashedPass;
 
-    getOneUser(_id: string): Promise<User> {
-        const foundUser = this.userModel.findById(_id);
-
-        if(!foundUser) {
-            throw new NotFoundException("Nincs ilyen Felhasználó");
+        try {
+            await createdUser.save();
+        } catch (error) {
+            if (error.code === '23505') {
+                throw new ConflictException('Felhasználónév, vagy Email cím már létezik!');
+            } else {
+                throw new InternalServerErrorException();
+            }
         }
-        return foundUser;
     }
 
-    updateUser(_id: string, userUpdate:User): Promise<User> {
-        return this.userModel.findByIdAndUpdate(_id, userUpdate)
+    async userLogin(userDto: UserDto): Promise<{ accessToken: string}> {
+        const {name, email, pass} = userDto;
+        const user = await this.userModel.findOne({name});
+        if(user && (await bcrypt.compare(pass, user.pass))) {
+            const payload = {name}; 
+            const accessToken: string = await this.jwtS.sign(payload);
+            return {accessToken};
+        } else {
+            throw new UnauthorizedException('Hibás belépési adatok!')
+        }
     }
 
-    deleteUser(_id: string): Promise<void> {
-        return this.userModel.findByIdAndDelete(_id);
+    async userUpdate(_id: string, userUpdate:User): Promise<User> {
+        const updatedUser  = await this.userModel.findByIdAndUpdate(_id, userUpdate);
+        if(!updatedUser) {
+            throw new NotFoundException("Frissítés sikertelen, nincs ilyen ID: "+_id);
+        }
+
+        return updatedUser;
+    }
+
+    async deleteUser(_id: string): Promise<void> {
+        const deletedUser = await this.userModel.findByIdAndDelete(_id);
+        if(!deletedUser) {
+            throw new NotFoundException("Törlés sikertelen, nincs ilyen ID: "+_id);
+        }
+        console.log(deletedUser);
     }
 }

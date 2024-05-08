@@ -1,12 +1,13 @@
-import { IsEmail, IsNotEmpty, IsOptional } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
 import mongoose from "mongoose";
 
 export class UserDto {
+    @IsOptional()
     _id: mongoose.Types.ObjectId
-    @IsNotEmpty()
+    @IsNotEmpty() @IsString()
     name: string;
     @IsNotEmpty() @IsEmail()
     email: string;
-    @IsNotEmpty()
+    @IsNotEmpty() @IsString()
     pass: string;
 }
