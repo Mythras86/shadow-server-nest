@@ -9,7 +9,7 @@ import { JwtPayLoad } from "./jwt-payload.interface";
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor (
-        @InjectModel(User.name) private userModel: Model<User>,
+        @InjectModel('Users') private userModel: Model<User>,
     ) {
         super({
             secretOrKey: 'thisisasecret111',

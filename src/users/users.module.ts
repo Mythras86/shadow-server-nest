@@ -13,13 +13,17 @@ import { JwtStrategy } from './jwt.strategy';
     JwtModule.register({
       secret: 'thisisasecret111',
       signOptions: {
-        expiresIn: 3600,
+        expiresIn: '3h',
       },
     }),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    MongooseModule.forFeature([{
+      schema: UserSchema,
+      name: 'Users'
+    }]),
   ],
   controllers: [UsersController],
   providers: [UsersService, JwtStrategy],
   exports: [JwtStrategy, PassportModule]
 })
+
 export class UsersModule {}

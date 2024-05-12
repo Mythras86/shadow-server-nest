@@ -7,7 +7,16 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb+srv://Mythras:Sineas8689Daneya@mydevdb.igiaj.mongodb.net/charsheet"),
+    MongooseModule.forRoot("mongodb+srv://Mythras:Sineas8689Daneya@mydevdb.igiaj.mongodb.net/charsheet", {
+      connectionFactory: (connection) => {
+        connection.on('connected', () => {
+           console.log('is connected');
+        });
+        connection._events.connected();
+        return connection;
+        },
+      },
+    ),
     ConfigModule.forRoot(),
     UsersModule, 
     CharactersModule, 

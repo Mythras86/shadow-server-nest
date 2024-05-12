@@ -13,17 +13,17 @@ export class UsersController {
     }
 
     @Post('/login')
-    userLogin(@Body() userDto: UserDto): Promise<{ accessToken: string}> {
+    userLogin(@Body() userDto: UserDto): Promise<{ token: string}> {
         return this.usersS.userLogin(userDto);
     }
 
-    @Patch('/:_id')
-    userUpdate(
-        @Param('_id') _id:string,
-        @Body() userDto: UserDto,
-    ): Promise<User> {
-        return this.usersS.userUpdate(_id, userDto);
-    }
+    // @Patch('/:_id')
+    // userUpdate(
+    //     @Param('_id') _id:string,
+    //     @Body() userDto: UserDto,
+    // ): Promise<User> {
+    //     return this.usersS.userUpdate(_id, userDto);
+    // }
 
     @Delete('/:_id')
     deleteUser(@Param('_id') _id:string): Promise<void> {

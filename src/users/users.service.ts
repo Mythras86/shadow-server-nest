@@ -10,7 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 export class UsersService {
 
     constructor(
-        @InjectModel(User.name) private userModel: Model<User>,
+        @InjectModel('Users') private userModel: Model<User>,
         private jwtS: JwtService,
     ) {}
 
@@ -32,13 +32,18 @@ export class UsersService {
         }
     }
 
-    async userLogin(userDto: UserDto): Promise<{ accessToken: string}> {
-        const {name, email, pass} = userDto;
-        const user = await this.userModel.findOne({name});
+    async userLogin(userDto: UserDto): Promise<any> {
+        const { email, pass} = userDto;
+        const user = await this.userModel.findOne({email});
         if(user && (await bcrypt.compare(pass, user.pass))) {
-            const payload = {name}; 
-            const accessToken: string = await this.jwtS.sign(payload);
-            return {accessToken};
+            const payload = {email}; 
+            const token: string = await this.jwtS.sign(payload);
+            return {
+                token: token, 
+                expiresIn: 10800,
+                _id: user._id,
+                name: user.name,
+            };
         } else {
             throw new UnauthorizedException('Hibás belépési adatok!')
         }
