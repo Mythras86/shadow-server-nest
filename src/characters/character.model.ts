@@ -87,66 +87,36 @@ export class Char {
     @Prop({ required: true })
     fizEro: number;
     @Prop({ required: true })
-    fizEroMod: number;
-    @Prop({ required: true })
     fizGyo: number;
-    @Prop({ required: true })
-    fizGyoMod: number;
     @Prop({ required: true })
     fizUgy: number;
     @Prop({ required: true })
-    fizUgyMod: number;
-    @Prop({ required: true })
     fizKit: number;
-    @Prop({ required: true })
-    fizKitMod: number;
 
     // asztrál
     @Prop({ required: true })
     asztEro: number;
     @Prop({ required: true })
-    asztEroMod: number;
-    @Prop({ required: true })
     asztGyo: number;
-    @Prop({ required: true })
-    asztGyoMod: number;
     @Prop({ required: true })
     asztUgy: number;
     @Prop({ required: true })
-    asztUgyMod: number;
-    @Prop({ required: true })
     asztKit: number;
-    @Prop({ required: true })
-    asztKitMod: number;
     
     // speciális
     @Prop({ required: true })
     kockatartalek: number;
     @Prop({ required: true })
-    kockatartalekMod: number;
-    @Prop({ required: true })
     magia: number;
-    @Prop({ required: true })
-    magiaMod: number;
     @Prop({ required: true })
     chi: number;
     @Prop({ required: true })
-    chiMod: number;
-    @Prop({ required: true })
     cyberCapacity: number;
-    @Prop({ required: true })
-    cyberCapacityMod: number;
 
     // konstans
     @Prop({ required: true })
     esszencia: number;
-    @Prop({ required: true })
-    esszenciaMod: number;
   
-    // szakértelmek
-    @Prop({ required: false })
-    skills: Array<any>;
-
     // állapot
     @Prop({ required: true })
     asztralisAllapot: number;
@@ -157,6 +127,10 @@ export class Char {
     @Prop({ required: true })
     taplaltsagAllapot: number;
 
+    // szakértelmek
+    @Prop({ required: false })
+    skills: Array<any>;
+    
     // felszerelések
     @Prop({ required: false })
     items: Array<Item>

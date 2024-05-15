@@ -58,7 +58,7 @@ export class UsersService {
         return updatedUser;
     }
 
-    async deleteUser(_id: string): Promise<void> {
+    async userDelete(_id: string): Promise<void> {
         const deletedUser = await this.userModel.findByIdAndDelete(_id);
         if(!deletedUser) {
             throw new NotFoundException("Törlés sikertelen, nincs ilyen ID: "+_id);

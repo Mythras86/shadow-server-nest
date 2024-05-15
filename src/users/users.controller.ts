@@ -5,16 +5,16 @@ import { UserDto } from './user.dto';
 
 @Controller('api/user')
 export class UsersController {
-    constructor(private usersS: UsersService) {}
+    constructor(private s: UsersService) {}
 
     @Post('/register')
     userRegister(@Body() userDto: UserDto): Promise<void> {
-        return this.usersS.userRegister(userDto);
+        return this.s.userRegister(userDto);
     }
 
     @Post('/login')
     userLogin(@Body() userDto: UserDto): Promise<{ token: string}> {
-        return this.usersS.userLogin(userDto);
+        return this.s.userLogin(userDto);
     }
 
     // @Patch('/:_id')
@@ -22,11 +22,11 @@ export class UsersController {
     //     @Param('_id') _id:string,
     //     @Body() userDto: UserDto,
     // ): Promise<User> {
-    //     return this.usersS.userUpdate(_id, userDto);
+    //     return this.s.userUpdate(_id, userDto);
     // }
 
     @Delete('/:_id')
-    deleteUser(@Param('_id') _id:string): Promise<void> {
-        return this.usersS.deleteUser(_id);
+    userDelete(@Param('_id') _id:string): Promise<void> {
+        return this.s.userDelete(_id);
     }
 }
