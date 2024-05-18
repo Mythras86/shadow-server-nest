@@ -1,6 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Patch, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './user.model';
 import { UserDto } from './user.dto';
 
 @Controller('api/user')

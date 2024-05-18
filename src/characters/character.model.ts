@@ -1,7 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument, Types } from 'mongoose';
 import { Item } from 'src/items/items.model';
 import { User } from 'src/users/user.model';
+import { Skill } from './skills.model';
 
 export type CharDoc = HydratedDocument<Char>
 @Schema()
@@ -9,10 +10,8 @@ export type CharDoc = HydratedDocument<Char>
 export class Char {
     
     // alapadatok
-    _id: mongoose.Types.ObjectId;
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-    user: User;
-
+    creatorId: User;
     // szöveges
     @Prop({ required: true })
     teljesnev: string;
@@ -129,7 +128,7 @@ export class Char {
 
     // szakértelmek
     @Prop({ required: false })
-    skills: Array<any>;
+    skills: Array<Skill>;
     
     // felszerelések
     @Prop({ required: false })

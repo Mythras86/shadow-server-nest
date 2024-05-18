@@ -1,12 +1,12 @@
-import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import mongoose from "mongoose";
 import { Item } from "src/items/items.model";
+import { Skill } from "./skills.model";
+import { User } from "src/users/user.model";
 
 export class CharDto {
-
-    _id?: mongoose.Types.ObjectId
-    @IsNotEmpty() @IsString()
-    creatorId: string;
+    @IsOptional() @IsMongoId()
+    creatorId?: User;
     // szöveges
     @IsNotEmpty() @IsString()
     teljesnev: string;
@@ -123,9 +123,9 @@ export class CharDto {
     
     // szakértelmek
     @IsOptional() @IsArray()
-    skills: Array<any>;
+    skills: Array<Skill>;
     
     // felszerelések
     @IsOptional() @IsArray()
-    items: Array<Item>
+    items: Array<Item>;
 }

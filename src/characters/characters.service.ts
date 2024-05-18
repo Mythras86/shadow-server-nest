@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, MongooseError } from 'mongoose';
 import { Char } from './character.model';
 import { CharDto } from './character.dto';
 
@@ -16,15 +16,18 @@ export class CharactersService {
         try {
             await newChar.save();
         } catch (error) {
-            throw new InternalServerErrorException();
+            throw new InternalServerErrorException(error);
         }
     }
 
-    getAllChars() {}
+    async getAllChars(): Promise<Char[]> {
+        const charsList = this.charModel.find().exec();
+        return charsList;
+    }
 
-    getOneChar() {}
+    async getOneChar() {}
 
-    updateChar() {}
+    async updateChar() {}
 
     async deleteChar(_id: string): Promise<void> {
         const deletedChar = await this.charModel.findByIdAndDelete(_id);
