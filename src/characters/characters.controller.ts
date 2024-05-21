@@ -21,10 +21,14 @@ export class CharactersController {
     }
 
     @Get('/:_id')
-    getOneChar() {}
+    getOneChar(@Param('_id') _id:string): Promise<Char> {
+        return this.s.getOneChar(_id);
+    }
 
     @Put('/:_id')
-    updateChar() {}
+    updateChar(@Param('_id') _id:string): Promise<Char> {
+        return this.s.updateChar(_id);
+    }
 
     @Delete('/:_id')
     deleteChar(@Param('_id') _id:string): Promise<void> {

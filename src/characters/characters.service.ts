@@ -25,9 +25,15 @@ export class CharactersService {
         return charsList;
     }
 
-    async getOneChar() {}
+    async getOneChar(_id: string): Promise<Char> {
+        const char = await this.charModel.findById(_id);
+        return char;
+    }
 
-    async updateChar() {}
+    async updateChar(_id: string): Promise<Char> {
+        const char = await this.charModel.findByIdAndUpdate(_id);
+        return char;
+    }
 
     async deleteChar(_id: string): Promise<void> {
         const deletedChar = await this.charModel.findByIdAndDelete(_id);
