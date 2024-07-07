@@ -1,7 +1,7 @@
 import { IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import mongoose from "mongoose";
 import { Item } from "src/items/items.model";
-import { Skill } from "./skills.model";
+import { Skill } from "./character-skills.model";
 import { User } from "src/users/user.model";
 
 export class CharDto {
@@ -103,13 +103,15 @@ export class CharDto {
     @IsNotEmpty() @IsNumber()
     magia: number;
     @IsNotEmpty() @IsNumber()
-    chi: number;
-    @IsNotEmpty() @IsNumber()
-    cyberCapacity: number;
+    chiAramlas: number;
     
     // konstans
     @IsNotEmpty() @IsNumber()
     esszencia: number;
+    @IsNotEmpty() @IsNumber()
+    reakcio: number;
+    @IsNotEmpty() @IsNumber()
+    kezdemenyezes: number;
     
     // állapot
     @IsNotEmpty() @IsNumber()
@@ -123,9 +125,9 @@ export class CharDto {
     
     // szakértelmek
     @IsOptional() @IsArray()
-    skills: Array<Skill>;
+    skills: Skill[];
     
     // felszerelések
     @IsOptional() @IsArray()
-    items: Array<Item>;
+    items: Item[];
 }

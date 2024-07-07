@@ -30,8 +30,10 @@ export class CharactersService {
         return char;
     }
 
-    async updateChar(_id: string): Promise<Char> {
-        const char = await this.charModel.findByIdAndUpdate(_id);
+    async updateChar(_id: string, charDto: CharDto): Promise<Char> {
+        console.log(_id)
+        console.log(charDto)
+        const char = await this.charModel.findByIdAndUpdate(_id, charDto);
         return char;
     }
 

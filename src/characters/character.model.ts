@@ -2,7 +2,8 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument, Types } from 'mongoose';
 import { Item } from 'src/items/items.model';
 import { User } from 'src/users/user.model';
-import { Skill } from './skills.model';
+import { Skill } from './character-skills.model';
+import { IsArray, IsOptional } from 'class-validator';
 
 export type CharDoc = HydratedDocument<Char>
 @Schema()
@@ -108,13 +109,15 @@ export class Char {
     @Prop({ required: true })
     magia: number;
     @Prop({ required: true })
-    chi: number;
-    @Prop({ required: true })
-    cyberCapacity: number;
+    chiAramlas: number;
 
     // konstans
     @Prop({ required: true })
     esszencia: number;
+    @Prop({ required: true })
+    reakcio: number;
+    @Prop({ required: true })
+    kezdemenyezes: number;
   
     // állapot
     @Prop({ required: true })
@@ -128,11 +131,11 @@ export class Char {
 
     // szakértelmek
     @Prop({ required: false })
-    skills: Array<Skill>;
+    skills: Skill[];
     
     // felszerelések
     @Prop({ required: false })
-    items: Array<Item>
+    items: Item[];
 }
 
 export const CharSchema = SchemaFactory.createForClass(Char); 

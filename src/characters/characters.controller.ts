@@ -1,36 +1,41 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { CharactersService } from './characters.service';
-import { CharDto } from './character.dto';
 import { Char } from './character.model';
+import { CharDto } from './character.dto';
 
-@Controller('api/char')
+@Controller('api/char/')
 export class CharactersController {
     
     constructor(
         private s: CharactersService,
     ) {}
 
-    @Post('/new')
-    newChar(@Body() charDto: any): Promise<void> {
+    @Post('new')
+    newChar(@Body() charDto: CharDto): Promise<void> {
         return this.s.newChar(charDto);
     }
 
-    @Get('/list')
+    @Get('list')
     getAllChars(): Promise<Char[]> {
         return this.s.getAllChars();
     }
 
-    @Get('/:_id')
+    @Get(':_id')
     getOneChar(@Param('_id') _id:string): Promise<Char> {
         return this.s.getOneChar(_id);
     }
 
-    @Put('/:_id')
-    updateChar(@Param('_id') _id:string): Promise<Char> {
-        return this.s.updateChar(_id);
+    @Patch(':_id')
+    updateChar(
+        @Param('_id') _id:string,
+        @Body() charDto: CharDto
+    ): Promise<Char> {
+        console.log(_id)
+        console.log(charDto)
+        return this.s.updateChar(_id, charDto);
     }
 
-    @Delete('/:_id')
+    @Delete(':_id')
     deleteChar(@Param('_id') _id:string): Promise<void> {
         return this.s.deleteChar(_id);
     }
