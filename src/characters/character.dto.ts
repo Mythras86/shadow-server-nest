@@ -1,5 +1,4 @@
 import { IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-import mongoose from "mongoose";
 import { Item } from "src/items/items.model";
 import { Skill } from "./character-skills.model";
 import { User } from "src/users/user.model";
@@ -125,7 +124,11 @@ export class CharDto {
     
     // szakértelmek
     @IsOptional() @IsArray()
-    skills: Skill[];
+    activeSkills: Skill[];
+    @IsOptional() @IsArray()
+    knowledgeSkills: Skill[];
+    @IsOptional() @IsArray()
+    languageSkills: Skill[];
     
     // felszerelések
     @IsOptional() @IsArray()

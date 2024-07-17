@@ -19,7 +19,6 @@ specs?: Spec[];
 
 export const SkillSchema = SchemaFactory.createForClass(Skill);
 
-@Schema()
 export class Spec {
 //alap adatok
 @Prop({ required: true })
@@ -29,5 +28,3 @@ spec: string;
 @Prop({ required: true })
 szint: number;
 }
-
-export const SpecSchema = SchemaFactory.createForClass(Spec);

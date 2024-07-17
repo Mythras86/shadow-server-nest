@@ -3,7 +3,6 @@ import mongoose, { HydratedDocument, Types } from 'mongoose';
 import { Item } from 'src/items/items.model';
 import { User } from 'src/users/user.model';
 import { Skill } from './character-skills.model';
-import { IsArray, IsOptional } from 'class-validator';
 
 export type CharDoc = HydratedDocument<Char>
 @Schema()
@@ -131,7 +130,11 @@ export class Char {
 
     // szakértelmek
     @Prop({ required: false })
-    skills: Skill[];
+    activeSkills: Skill[];
+    @Prop({ required: false })
+    knowledgeSkills: Skill[];
+    @Prop({ required: false })
+    languageSkills: Skill[];
     
     // felszerelések
     @Prop({ required: false })
