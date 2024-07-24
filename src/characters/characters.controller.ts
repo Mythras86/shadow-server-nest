@@ -30,8 +30,6 @@ export class CharactersController {
         @Param('_id') _id:string,
         @Body() charDto: CharDto
     ): Promise<Char> {
-        console.log(_id)
-        console.log(charDto)
         return this.s.updateChar(_id, charDto);
     }
 

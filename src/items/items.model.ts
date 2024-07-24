@@ -9,6 +9,8 @@ export class Item {
     @Prop({ required: true })
     tipus: string;
     @Prop({ required: true })
+    faName: string;
+    @Prop({ required: true })
     nev: string;
     @Prop({ required: false })
     leiras?: string;

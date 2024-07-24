@@ -63,6 +63,5 @@ export class UsersService {
         if(!deletedUser) {
             throw new NotFoundException("Törlés sikertelen, nincs ilyen ID: "+_id);
         }
-        console.log(deletedUser);
     }
 }
