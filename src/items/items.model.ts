@@ -59,13 +59,18 @@ export class Item {
     hatosugar?: number;
     
     @Prop({ required: false })
+    kiegeszitoKorlatozas?: Array<nevErtek>
+    @Prop({ required: false })
+    kiegeszitok?: Array<Item>;
+    
+    @Prop({ required: false })
     tavolsag?: Array<Tavolsag>;
     
     @Prop({ required: false })
     tamadas?: Array<Tamadas>;
     
     @Prop({ required: false })
-    tulajdonsagModosito?: Array<TulajdonsagModosito>;
+    tulajdonsagModosito?: Array<nevErtek>;
     
     //felhasználás pl.?: fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
     @Prop({ required: false })
@@ -99,7 +104,7 @@ export class Tavolsag {
     modosito: number;
 }
 
-export class TulajdonsagModosito {
+export class nevErtek {
     @Prop({ required: true })
     nev: string;
     @Prop({ required: true })

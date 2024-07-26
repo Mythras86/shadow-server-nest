@@ -10,6 +10,8 @@ nevKieg: string;
 @Prop({ required: true })
 csoport: string;
 @Prop({ required: true })
+faName: string;
+@Prop({ required: true })
 szint: number;
 @Prop({ required: true })
 kapTul: string;

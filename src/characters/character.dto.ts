@@ -1,7 +1,7 @@
 import { IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-import { Item } from "src/items/items.model";
-import { Skill } from "./character-skills.model";
 import { User } from "src/users/user.model";
+import { SkillDto } from "./character-skills.dto";
+import { ItemDto } from "src/items/items.dto";
 
 export class CharDto {
     @IsOptional() @IsMongoId()
@@ -124,31 +124,31 @@ export class CharDto {
     
     // szakértelmek
     @IsOptional() @IsArray()
-    activeSkills: Skill[];
+    activeSkills: SkillDto[];
     @IsOptional() @IsArray()
-    knowledgeSkills: Skill[];
+    knowledgeSkills: SkillDto[];
     @IsOptional() @IsArray()
-    languageSkills: Skill[];
+    languageSkills: SkillDto[];
     
     // felszerelések
     @IsOptional() @IsArray()
-    armors: Item[];
+    armors: ItemDto[];
     @IsOptional() @IsArray()
-    armorAddons: Item[];
+    armorAddons: ItemDto[];
     @IsOptional() @IsArray()
-    weapons: Item[];
+    weapons: ItemDto[];
     @IsOptional() @IsArray()
-    weaponAddons: Item[];
+    weaponAddons: ItemDto[];
     @IsOptional() @IsArray()
-    items: Item[];
+    ItemDtos: ItemDto[];
     @IsOptional() @IsArray()
-    cybers: Item[];
+    cybers: ItemDto[];
     @IsOptional() @IsArray()
-    explosives: Item[];
+    explosives: ItemDto[];
     @IsOptional() @IsArray()
-    artifacts: Item[];
+    artifacts: ItemDto[];
     @IsOptional() @IsArray()
-    spells: Item[];
+    spells: ItemDto[];
     @IsOptional() @IsArray()
-    spirits: Item[];
+    spirits: ItemDto[];
 }

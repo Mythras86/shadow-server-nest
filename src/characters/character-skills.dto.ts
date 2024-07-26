@@ -7,6 +7,8 @@ export class SkillDto {
     nevKieg:string;
     @IsNotEmpty() @IsString()
     csoport:string;
+    @IsNotEmpty() @IsString()
+    faName:string;
     @IsNotEmpty() @IsNumber()
     szint:number;
     @IsNotEmpty() @IsString()
