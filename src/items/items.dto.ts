@@ -7,11 +7,11 @@ export class ItemDto {
     @IsNotEmpty() @IsString()
     tipus: string;
     @IsNotEmpty() @IsString()
-    faName: string;
-    @IsNotEmpty() @IsString()
     nev: string;
     @IsNotEmpty() @IsString()
-    leiras?: string;
+    elhelyezes: string;
+    @IsNotEmpty() @IsString()
+    leiras: string;
     
     //súly
     @IsNotEmpty() @IsNumber()

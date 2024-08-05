@@ -132,23 +132,5 @@ export class CharDto {
     
     // felszerelések
     @IsOptional() @IsArray()
-    armors: ItemDto[];
-    @IsOptional() @IsArray()
-    armorAddons: ItemDto[];
-    @IsOptional() @IsArray()
-    weapons: ItemDto[];
-    @IsOptional() @IsArray()
-    weaponAddons: ItemDto[];
-    @IsOptional() @IsArray()
-    ItemDtos: ItemDto[];
-    @IsOptional() @IsArray()
-    cybers: ItemDto[];
-    @IsOptional() @IsArray()
-    explosives: ItemDto[];
-    @IsOptional() @IsArray()
-    artifacts: ItemDto[];
-    @IsOptional() @IsArray()
-    spells: ItemDto[];
-    @IsOptional() @IsArray()
-    spirits: ItemDto[];
+    items: ItemDto[];
 }

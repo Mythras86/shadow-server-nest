@@ -138,25 +138,7 @@ export class Char {
     
     // felszerelések
     @Prop({ required: false })
-    armors: Item[];
-    @Prop({ required: false })
-    armorAddons: Item[];
-    @Prop({ required: false })
-    weapons: Item[];
-    @Prop({ required: false })
-    weaponAddons: Item[];
-    @Prop({ required: false })
-    Items: Item[];
-    @Prop({ required: false })
-    cybers: Item[];
-    @Prop({ required: false })
-    explosives: Item[];
-    @Prop({ required: false })
-    artifacts: Item[];
-    @Prop({ required: false })
-    spells: Item[];
-    @Prop({ required: false })
-    spirits: Item[];
+    items: Item[];
 
 }
 

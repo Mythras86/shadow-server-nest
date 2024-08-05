@@ -9,11 +9,11 @@ export class Item {
     @Prop({ required: true })
     tipus: string;
     @Prop({ required: true })
-    faName: string;
-    @Prop({ required: true })
     nev: string;
-    @Prop({ required: false })
-    leiras?: string;
+    @Prop({ required: true })
+    elhelyezes: string;
+    @Prop({ required: true })
+    leiras: string;
     
     //súly
     @Prop({ required: false })
