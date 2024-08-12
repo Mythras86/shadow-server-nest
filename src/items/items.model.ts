@@ -50,6 +50,8 @@ export class Item {
     szint?: number;
     @Prop({ required: false })
     maxSzint?: number;
+    @Prop({ required: false })
+    pancel?: number;
     
     @Prop({ required: false })
     celszam?: string;

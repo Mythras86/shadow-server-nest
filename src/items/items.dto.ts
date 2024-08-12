@@ -48,6 +48,8 @@ export class ItemDto {
     szint?: number;
     @IsOptional() @IsNumber()
     maxSzint?: number;
+    @IsOptional() @IsNumber()
+    pancel?: number;
     
     @IsOptional() @IsString()
     celszam?: string;
