@@ -49,8 +49,8 @@ export class ItemDto {
     @IsOptional() @IsNumber()
     maxSzint?: number;
     
-    @IsOptional() @IsNumber()
-    celszam?: number;
+    @IsOptional() @IsString()
+    celszam?: string;
     @IsOptional() @IsNumber()
     celpontokSzama?: number;
     @IsOptional() @IsNumber()
@@ -61,11 +61,20 @@ export class ItemDto {
     @IsOptional() @IsArray()
     kiegeszitok?: Array<ItemDto>;
     
-    @IsOptional() @IsArray()
-    tavolsag?: Array<TavolsagDto>;
+    @IsOptional() @IsNumber()
+    tavolsag?: number;
     
-    @IsOptional() @IsArray()
-    tamadas?: Array<TamadasDto>;
+    @IsOptional() @IsString()
+    tamadas?: string;
+    @IsOptional() @IsNumber()
+    akcio?: number;
+    @IsOptional() @IsNumber()
+    ero?: number;
+    @IsOptional() @IsNumber()
+    sebzes?: number;
+    @IsOptional() @IsNumber()
+    sebKod?: string;
+
     
     @IsOptional() @IsArray()
     tulajdonsagModosito?: Array<nevErtekDto>;
@@ -77,28 +86,6 @@ export class ItemDto {
     felhasznalt?: number;
     @IsOptional() @IsNumber()
     felhasznalasMax?: number;
-}
-        
-export class TamadasDto {
-    @IsNotEmpty() @IsString()
-    nev: string;
-    @IsNotEmpty() @IsNumber()
-    akcio: number;
-    @IsNotEmpty() @IsNumber()
-    ero: number;
-    @IsNotEmpty() @IsNumber()
-    sebzes: number;
-    @IsNotEmpty() @IsString()
-    sebKod: string;
-}
-
-export class TavolsagDto {
-    @IsNotEmpty() @IsString()
-    nev: string;
-    @IsNotEmpty() @IsNumber()
-    ertek: number;
-    @IsNotEmpty() @IsNumber()
-    modosito: number;
 }
 
 export class nevErtekDto {

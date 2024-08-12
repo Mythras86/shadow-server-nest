@@ -52,7 +52,7 @@ export class Item {
     maxSzint?: number;
     
     @Prop({ required: false })
-    celszam?: number;
+    celszam?: string;
     @Prop({ required: false })
     celpontokSzama?: number;
     @Prop({ required: false })
@@ -64,10 +64,18 @@ export class Item {
     kiegeszitok?: Array<Item>;
     
     @Prop({ required: false })
-    tavolsag?: Array<Tavolsag>;
+    tavolsag?: number;
     
     @Prop({ required: false })
-    tamadas?: Array<Tamadas>;
+    tamadas?: string;
+    @Prop({ required: true })
+    akcio?: number;
+    @Prop({ required: true })
+    ero?: number;
+    @Prop({ required: true })
+    sebzes?: number;
+    @Prop({ required: true })
+    sebKod?: string;
     
     @Prop({ required: false })
     tulajdonsagModosito?: Array<nevErtek>;
@@ -82,27 +90,6 @@ export class Item {
     }
         
 export const ItemSchema = SchemaFactory.createForClass(Item);
-
-export class Tamadas {
-    @Prop({ required: true })
-    nev: string;
-    @Prop({ required: true })
-    akcio: number;
-    @Prop({ required: true })
-    ero: number;
-    @Prop({ required: true })
-    sebzes: number;
-    sebKod: string;
-}
-
-export class Tavolsag {
-    @Prop({ required: true })
-    nev: string;
-    @Prop({ required: true })
-    ertek: number;
-    @Prop({ required: true })
-    modosito: number;
-}
 
 export class nevErtek {
     @Prop({ required: true })
