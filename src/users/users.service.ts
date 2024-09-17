@@ -27,7 +27,7 @@ export class UsersService {
             if (error.code === '23505') {
                 throw new ConflictException('Felhasználónév, vagy Email cím már létezik!');
             } else {
-                throw new InternalServerErrorException();
+                throw new InternalServerErrorException('Egyéb hiba, regisztráció sikertelen!');
             }
         }
     }

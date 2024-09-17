@@ -2,6 +2,8 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { CharactersService } from './characters.service';
 import { Char } from './character.model';
 import { CharDto } from './character.dto';
+import { GetUser } from 'src/users/get-user.decorator';
+import { User } from 'src/users/user.model';
 
 @Controller('api/char/')
 export class CharactersController {
@@ -21,20 +23,24 @@ export class CharactersController {
     }
 
     @Get(':_id')
-    getOneChar(@Param('_id') _id:string): Promise<Char> {
+    getOneChar(
+        @Param('_id') _id:string, 
+    ): Promise<Char> {
         return this.s.getOneChar(_id);
     }
-
+    
     @Patch(':_id')
     updateChar(
         @Param('_id') _id:string,
-        @Body() charDto: CharDto
+        @Body() charDto: CharDto,
     ): Promise<Char> {
         return this.s.updateChar(_id, charDto);
     }
-
+    
     @Delete(':_id')
-    deleteChar(@Param('_id') _id:string): Promise<void> {
+    deleteChar(
+        @Param('_id') _id:string,
+    ): Promise<void> {
         return this.s.deleteChar(_id);
     }
 }

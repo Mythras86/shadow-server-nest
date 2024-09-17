@@ -11,7 +11,7 @@ export class Char {
     
     // alapadatok
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-    creatorId: User;
+    creatorId: User["_id"];
     // szöveges
     @Prop({ required: true })
     teljesnev: string;
