@@ -2,8 +2,6 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { CharactersService } from './characters.service';
 import { Char } from './character.model';
 import { CharDto } from './character.dto';
-import { GetUser } from 'src/users/get-user.decorator';
-import { User } from 'src/users/user.model';
 
 @Controller('api/char/')
 export class CharactersController {
