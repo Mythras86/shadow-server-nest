@@ -8,7 +8,7 @@ export class CharDto {
     creatorId?: User;
     // szöveges
     @IsNotEmpty() @IsString()
-    teljesnev: string;
+    szuletesiNev: string;
     @IsNotEmpty() @IsString()
     becenev:string;
     @IsNotEmpty() @IsString()
@@ -20,13 +20,13 @@ export class CharDto {
     
     // értékválasztó
     @IsNotEmpty() @IsString()
-    nem: string;
+    szuletesiNem: string;
     @IsNotEmpty() @IsString()
     dns:string;
     @IsNotEmpty() @IsString()
     anyanyelv: string;
     @IsNotEmpty() @IsNumber()
-    eletkor:number;
+    szuletesiDatum:number;
     @IsNotEmpty() @IsNumber()
     magassag:number;
     @IsNotEmpty() @IsNumber()

@@ -14,7 +14,7 @@ export class Char {
     creatorId: User["_id"];
     // szöveges
     @Prop({ required: true })
-    teljesnev: string;
+    szuletesiNev: string;
     @Prop({ required: true })
     becenev:string;
     @Prop({ required: true })
@@ -26,13 +26,13 @@ export class Char {
 
     // értékválasztó
     @Prop({ required: true })
-    nem: string;
+    szuletesiNem: string;
     @Prop({ required: true })
     dns:string;
     @Prop({ required: true })
     anyanyelv: string;
     @Prop({ required: true })
-    eletkor:number;
+    szuletesiDatum:number;
     @Prop({ required: true })
     magassag:number;
     @Prop({ required: true })
